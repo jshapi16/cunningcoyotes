@@ -14,13 +14,13 @@ import numpy as np
 #########################################################
 app = Flask(__name__,
             static_url_path = '',
-            static_folder = 'CC_Dashboard',
-            template_folder = "CC_Dashboard")
+            static_folder = 'Dashboard',
+            template_folder = "Dashboard")
             #just get a sample json to connect
-app.config.from_object('config')
+# app.config.from_object('config')
 
 #Postgres setup
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:haikusareb@localhost:5432/Inequality_db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:bball@localhost:5432/wages_db"
 db = SQLAlchemy(app)
 
 
