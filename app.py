@@ -15,8 +15,8 @@ from sqlalchemy.sql.expression import true
 #########################################################
 app = Flask(__name__,
             static_url_path = '',
-            static_folder = 'Dashboard',
-            template_folder = "Dashboard")
+            static_folder = 'docs',
+            template_folder = "docs")
             #just get a sample json to connect
 
 #Postgres setup
