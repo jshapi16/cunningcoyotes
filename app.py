@@ -20,7 +20,7 @@ app = Flask(__name__,
             #just get a sample json to connect
 
 #Postgres setup
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5432/Inequality_db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:haikusareb@localhost:5432/Inequality_db"
 db = SQLAlchemy(app)
 
 
