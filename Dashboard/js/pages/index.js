@@ -52,12 +52,12 @@ function initRealTimeChart() {
         }
     }
 
-    updateRealTime();
+    // updateRealTime();
 
-    $('#realtime').on('change', function () {
-        realtime = this.checked ? 'on' : 'off';
-        updateRealTime();
-    });
+    // $('#realtime').on('change', function () {
+    //     realtime = this.checked ? 'on' : 'off';
+    //     updateRealTime();
+    // });
     //====================================================================================================
 }
 

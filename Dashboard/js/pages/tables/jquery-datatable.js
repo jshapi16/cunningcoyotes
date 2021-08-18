@@ -1,6 +1,6 @@
 $(function () {
     $('.js-basic-example').DataTable({
-        responsive: true
+        responsive: true,
     });
 
     //Exportable table
@@ -8,7 +8,7 @@ $(function () {
         dom: 'Bfrtip',
         responsive: true,
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'pdf', 'print'
         ]
     });
 });

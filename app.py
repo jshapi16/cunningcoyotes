@@ -8,19 +8,19 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify, request
 import numpy as np
-#from config.py import username, password
+from sqlalchemy.sql.expression import true
+
 
 #Flask Setup
 #########################################################
 app = Flask(__name__,
             static_url_path = '',
-            static_folder = 'CC_Dashboard',
-            template_folder = "CC_Dashboard")
+            static_folder = 'Dashboard',
+            template_folder = "Dashboard")
             #just get a sample json to connect
-app.config.from_object('config')
 
 #Postgres setup
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:haikusareb@localhost:5432/Inequality_db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5432/Inequality_db"
 db = SQLAlchemy(app)
 
 
@@ -35,9 +35,8 @@ inequality = Base.classes.inequality_table
 def welcome():
     return render_template("index.html")
 
-#make another route that serves the data and returning it as a json 
-#then your js on the home page and json serves 
-#connect the data from sql using localhost 5000
+#API Route
+#############################################
 
 @app.route("/inequality_api")
 def api():
@@ -56,16 +55,28 @@ def api():
         inequality.median_income_percentage, 
         inequality.gdp_percap, 
         inequality.gdp_percap_percentage, 
-        inequality.sample_thousands, 
         inequality.first_percentile, 
         inequality.second_percentile,
         inequality.third_percentile,  
         inequality.fourth_percentile,
-        inequality.top_five_percent).all()
+        inequality.fifth_percentile,
+        inequality.top_five_percent,
+        inequality.cpi_change,
+	    inequality.pce_food_change,
+	    inequality.pce_energy_change,
+	    inequality.gdp_change,
+	    inequality.median_income_change,
+	    inequality.gdp_percap_change,
+	    inequality.first_change,
+	    inequality.second_change,
+	    inequality.third_change,
+	    inequality.fourth_change,
+        inequality.fifth_change,
+	    inequality.top_five_change).all()
 
 
     inequality_list = []
-    for id, year, cpi, percentage_cpi, pce_food_billons_of_dollars, pce_energy_goods_services_billons_of_dollars, pce_food_percentage, pce_energy_goods_services_percentage, gdp_billions, gdp_percentage, median_income, median_income_percentage, gdp_percap, gdp_percap_percentage, sample_thousands, first_percentile, second_percentile, third_percentile, fourth_percentile, top_five_percent in results:
+    for id, year, cpi, percentage_cpi, pce_food_billons_of_dollars, pce_energy_goods_services_billons_of_dollars, pce_food_percentage, pce_energy_goods_services_percentage, gdp_billions, gdp_percentage, median_income, median_income_percentage, gdp_percap, gdp_percap_percentage, first_percentile, second_percentile, third_percentile, fourth_percentile, fifth_percentile, top_five_percent, cpi_change, pce_food_change, pce_energy_change, gdp_change, median_income_change, gdp_percap_change, first_change, second_change, third_change, fourth_change, fifth_change, top_five_change in results:
         inequality_dict = {}
         inequality_dict['id'] = id
         inequality_dict["year"] = year
@@ -81,12 +92,24 @@ def api():
         inequality_dict["median_income_percentage"] = median_income_percentage
         inequality_dict["gdp_percap"] = gdp_percap
         inequality_dict["gdp_percap_percentage"] = gdp_percap_percentage
-        inequality_dict["sample_thousands"] = sample_thousands
         inequality_dict["first_percentile"] = first_percentile
         inequality_dict["second_percentile"] = second_percentile
         inequality_dict["third_percentile"] = third_percentile
         inequality_dict["fourth_percentile"] = fourth_percentile
+        inequality_dict["fifth_percentile"] = fifth_percentile
         inequality_dict["top_five_percent"] = top_five_percent
+        inequality_dict["cpi_change"] = cpi_change
+        inequality_dict["pce_food_change"] = pce_food_change
+        inequality_dict["pce_energy_change"] = pce_energy_change
+        inequality_dict["gdp_change"] = gdp_change
+        inequality_dict["median_income_change"] = median_income_change
+        inequality_dict["gdp_percap_change"] = gdp_percap_change
+        inequality_dict["first_change"] = first_change
+        inequality_dict["second_change"] = second_change
+        inequality_dict["third_change"] = third_change
+        inequality_dict["fourth_change"] = fourth_change
+        inequality_dict["fifth_change"] = fifth_change
+        inequality_dict["top_five_change"] = top_five_change
         inequality_list.append(inequality_dict)
     return jsonify(inequality_list)
 
