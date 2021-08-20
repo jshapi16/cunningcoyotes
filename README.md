@@ -62,8 +62,10 @@ Us to choose which variables we want to compare by eliminating GDP, Median Incom
 
 
 ## Findings
-Although we were able to draw out a few conclusions with our data set, there are some 
- Further Develop Dataset 
+Although we were able to draw out a few conclusions with our data set, there are some that stuck out.
+* American median income stagnated from 2000 onwards
+* Lower percentiles saw their incomes increase at a slower rate than the incomes of higher percentiles
+* Median income is upward trending since 2008
 
 
 ![Change in GDP vs Income](Data/Final_dashboard_images/change_in_gdp_vs_income.png) 
