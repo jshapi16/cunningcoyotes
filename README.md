@@ -70,6 +70,8 @@ Although we were able to draw out a few conclusions with our data set, there are
 
 ![Change in GDP vs Income](Data/Final_dashboard_images/change_in_gdp_vs_income.png) 
 
+![Change in GDP vs Median Income](Data/Final_dashboard_images/change_in_gdp_vs_median_income.png) 
+
 ## Post Mortem 
 
 Although we were able to make out conclusions from our data, there are further action iteams we will be looking to add in the coming weeks. 
